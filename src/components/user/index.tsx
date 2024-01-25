@@ -13,7 +13,7 @@ const steps = [
 
 export default function User() {
     const [activeStep, setActiveStep] = React.useState(0);
-    const [completed, setCompleted] = React.useState<{
+    const [completed] = React.useState<{
         [k: number]: boolean;
     }>({});
 
@@ -36,7 +36,7 @@ export default function User() {
     const handleNext = () => {
         const newActiveStep =
             isLastStep() && !allStepsCompleted()
-                ? steps.findIndex((step, i) => !(i in completed))
+                ? steps.findIndex((_step, i) => !(i in completed))
                 : activeStep + 1;
         setActiveStep(newActiveStep);
     };
